@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 //Oh, we got burgers here!
-const burger = require("../models/burger");
+const burger = require("../models/burger.js");
 
 
 

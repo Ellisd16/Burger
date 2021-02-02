@@ -1,0 +1,36 @@
+body {
+    font-family: 'Pompiere', cursive;
+    font-size: 30px;
+    background-color: blanchedalmond;
+}
+
+.mainTitle, .title {
+    font-family: 'Parisienne', cursive;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.prevTitle {
+    font-family: 'Parisienne', cursive;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+#row1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#row2 {
+    margin-bottom: 20px;
+}
+
+.orderBurger {
+    text-align: center;
+}
+
+.chef, .burger{
+    display: inline-flex;
+    align-items: center;
+    width: 300px;
+}

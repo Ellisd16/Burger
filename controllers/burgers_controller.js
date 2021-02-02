@@ -2,15 +2,14 @@
 const express = require("express");
 const router = express.Router();
 
+//Oh, we got burgers here!
 const burger = require("../models/burger");
 
 
-router.get("/", (req, res) => {
-    res.redirect("/index")
-})
+
 
 //directs user to homepage
-router.get("/index", (req, res) => {
+router.get("/", (req, res) => {
     burger.all(function (data) {
         const hbsObject = {
             burger: data
@@ -20,20 +19,20 @@ router.get("/index", (req, res) => {
     });
 });
 // takes user to list of burgers
-router.post("/burgers/create", (req, res) => {
-    burger.create(["burger_name"],
-        [req.body.burger_name],
+router.post("/api/burgers", (req, res) => {
+    burger.create(["burger_name", "devoured"],
+        [req.body.burger_name, req.body.devoured],
         function (result) {
             res.json({ id: result.insertId });
         });
 });
 //takes user to modifier, then to udpated list 
-router.post("/burger/devour/:id", () => {
+router.put("/api/burger/:id", (req, res) => {
     const condition = "id = " + req.params.id;
 
     burger.update(
         {
-            burger_name: req.body.burger_name
+            devoured: req.body.devoured
         },
         condition, function (result) {
             if (result.changedRows === 0) {

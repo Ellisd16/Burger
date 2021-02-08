@@ -3,14 +3,149 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-    <title>Burger Muncher!</title>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="../../public/assests/js/burger.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Concert+One&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cabin&family=Montserrat&display=swap"
+        rel="stylesheet">
+
+    <title>Eat Da Burger!</title>
 </head>
 
-<body>
+<body class="body">
     {{{ body }}}
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $(".change-eat").on("click", function (event) {
+                var id = $(this).val();
+                console.log(id);
+                var newDevour = $(this).data("newdevour");
+
+                var newDevourState = {
+                    devoured: true
+                };
+                console.log(newDevour);
+
+                // Send the PUT request.
+                $.ajax("/api/burgers/" + id, {
+                    type: "PUT",
+                    data: newDevourState
+                }).then(
+                    function () {
+                        console.log("changed devour to", newDevour);
+                        // Reload the page to get the updated list
+                        location.reload();
+                    }
+                );
+            });
+
+            $(".create-form").on("submit", function (event) {
+                // Make sure to preventDefault on a submit event.
+                event.preventDefault();
+
+                var newBurger = {
+                    burger_name: $("#burg").val().trim(),
+                    devoured: false
+                };
+
+
+                // Send the POST request.
+                $.ajax("/api/burgers", {
+                    type: "POST",
+                    data: newBurger
+                }).then(
+                    function () {
+                        console.log("created new burger");
+                        // Reload the page to get the updated list
+                        location.reload();
+                    }
+                );
+            });
+
+            $(".delete-burger").on("click", function (event) {
+                var id = $(this).data("id");
+
+                // Send the DELETE request.
+                $.ajax("/api/burgers/" + id, {
+                    type: "DELETE"
+                }).then(
+                    function () {
+                        console.log("deleted burger", id);
+                        // Reload the page to get the updated list
+                        location.reload();
+                    }
+                );
+            });
+        });
+    </script>
+    <style>
+        .body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: rgb(253, 194, 54);
+        }
+
+        img {
+            width: 350px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .overlay {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transform: .5s ease;
+        }
+
+        .container:hover .overlay {
+            bottom: 0;
+            height: 100%
+        }
+
+        .text {
+            font-family: 'Concert One', sans-serif;
+            white-space: nowrap;
+            color: rgb(235, 19, 19);
+            font-size: 80px;
+
+        }
+
+
+
+        .add {
+            font-family: 'Amatic SC', cursive;
+            font-size: 30px;
+        }
+
+        h2 {
+            font-family: 'Amatic SC', cursive;
+            text-align: center;
+        }
+
+        .form-group {
+            text-align: center;
+        }
+
+        .button {
+            text-align: center;
+        }
+
+        .make {
+            text-align: center;
+        }
+    </style>
 </body>
 
 </html>

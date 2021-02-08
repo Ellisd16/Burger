@@ -1,34 +1,81 @@
+<div class="container">
+
+    <img src="/public/assests/img/burgertime.jpg" class="pic" alt="Burger" />
+
+    <div class="overlay">
+
+        <br>
+        <P>
+
+    </div>
+
+</div>
+
+<h1 class="text">Eat Delicious Burgers!</h1>
+
+<br>
+
+<br>
+
+<br>
+
 <div class="row">
-    <center>
+    <div class="col">
+        <h2>Burgers not devoured!</h2>
+        <ul id="eatOne">
+            {{#each burgers}}
+            {{#unless this.devoured}}
+            <li>
+                {{this.burger_name}}
 
-        <div class="col-md-5">
-            <h3 class="submitFont">Eat Me!</h3>
-            <div id="burgersAvailable">
-                {{#each burgers}} {{#unless devoured}}
-                <form action="burger/devour/{{id}}" method="POST">
-                    <div class="input-group">
-                        <li class="form-control">{{burger_name}}</li>
-                        <span class="input-group-btn">
-                            <button class="btn btn-danger devour-button" type="submit">Devour It!</button>
-                        </span>
-                    </div>
-                </form>
-                {{/unless}} {{/each}}
-            </div>
+                <button class="change-eat" value={{this.id}} data-eaten={{this.devoured}}>
+                    Devour It!
+                </button>
+
+            </li>
+            {{/unless}}
+            {{/each}}
+
+        </ul>
+    </div>
+
+    <div class="col">
+        <h2>Burgers devoured!</h2>
+
+        <ul id="eatTwo">
+            {{#each burgers}}
+            {{#if devoured}}
+            <li>
+                {{this.burger_name}}
+            </li>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+<div class="make" align="center">
+    <h2 class="add">Make a Burger</h2>
+
+    <form class="create-form">
+
+        <div class="form-group">
+            <label for="burg">New burger:</label>
+            <input type="text" id="burg" name="name">
         </div>
 
-        <div class="col-md-2"></div>
+        <br>
 
-
-        <div class="col-md-5">
-            <h3 class="submitFont">Already Eaten:</h3>
-            <div id="alreadyEaten">
-                {{#each burgers}} {{#if this.devoured}}
-                <div class="input-group">
-                    <li class="form-control">{{this.burger_name}}</li>
-                </div>
-                {{/if}} {{/each}}
-            </div>
+        <div class="button">
+            <button align="center" type="submit">Add a burger!</button>
         </div>
-    </center>
+
+    </form>
+
+    <br>
+
+    <br>
+
+    <br>
+
 </div>

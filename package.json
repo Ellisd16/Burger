@@ -7,6 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "development": {
+    "username": "b2yrgmovvecg3opw",
+    "pasword": "racz9emyq8u3mjdm",
+    "database": "pil28yrqjt030gqg",
+    "host": "pxukqohrckdfo4ty.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ellisd16/Burger.git"

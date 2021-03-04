@@ -20,7 +20,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
+    "sequelize": "^6.5.0",
+    "gitignore": "^0.6.0",
+    "heroku": "^7.44.0",
     "mysql": "^2.18.1",
-    "sequelize": "^6.5.0"
+    "node": "^14.13.0"
   }
 }

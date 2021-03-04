@@ -12,12 +12,12 @@ if (process.env.JAWSBD_URL) {
         database: "burgers_db"
     });
 }
-
-connection.connect((err) => {
-    if (err) {
-        console.error("error connecting: " + err.stack);
-        return;
-    }
+//deleting err param but add it back if it doesn't work
+connection.connect(() => {
+    // if (err) {
+    //     console.error("error connecting: " + err.stack);
+    //     return;
+    // }
     console.log("connected as id " + connection.threadId);
 });
 

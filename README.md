@@ -10,9 +10,12 @@ Javascript, Node.js, Handlebars
 
 -Express & MySql as well
 
-## Issues
+## Deployment
+The application runs on Heroku using the programs listed above. As of right now, you are able to load the page and see all the listed burgers! 
 
-The app runs fairly well. The only local problem is that you have to refresh the page after devouring a burger. Other than that the app works fine. I did have a problem deploying it Heroku however, as I am present with an error. I'll still link the heroku below just in case I find the solution. 
+## Future Developments
+I want to make the page run a little smoother on Heroku like it does on local host, and maybe change some of the styling. 
+ 
 
 ## Heroku Link
 https://thawing-coast-61937.herokuapp.com/
